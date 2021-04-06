@@ -16,10 +16,16 @@ Website that allows a user to create a private streaming and chat page.
 - I can also click the name of the stream and be taken to the twitch website to interact with the streamer and their followers.
 
 ## APIs/NPM Libraries
-- NPM Stream Chat
-- Stream API
-- Twitch API
-- NPM Scheduler-Calendar
+- NPM Stream Chat : https://www.npmjs.com/package/stream-chat
+- Stream API : https://getstream.io/chat/get_started/
+- Twitch API : https://dev.twitch.tv/docs/
+- NPM Scheduler-Calendar : https://www.npmjs.com/package/scheduler-calendar
+- Bcrypt
+
+## Database
+- UserDB - stores username, encrypted password, and email
+- VideoDB - links to video streams
+- EventDB - stores user created calendar events
 
 ## Wireframe
 

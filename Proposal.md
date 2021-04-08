@@ -1,39 +1,28 @@
 ## Title
-Twitch Me
+Premiere
 
 ## Description
-Website that allows a user to create a private streaming and chat page.
+Premiere is an application that allows a user to create a private screening for their personal projects. He/She/They could invite their friends to sign up into the screening room to experience their work and chat about it on a private chat.  The app will focus on media like Music videos and Music, but could in the future be implemented with Livestreams, Featured Films, Short Films, Commercials and much more.
 
 ## User Story
-
-- As a user, I want to be able to create an account on Twitch Me.
-- As a user, I would like to watch live streams and invite my friends to watch with me.
-- As a user, I would like to chat with my friends about said video.
-- As a user, I would like to have access to a calendar to set up viewing dates.
-- As a registered user, I want to search for videos of people playing Spider-Man: Miles Morales.
-- When i search for videos, I am given 8 recent videos of people streaming said game.
-- When I click on a video, I am shown the video and a chat box underneath said video.
-- I can also click the name of the stream and be taken to the twitch website to interact with the streamer and their followers.
+- As a user, I want to be able to create an account on Premier.
+- As a user, I would like to watch private streams and invite my friends to watch with me.
+- As a user, I would like to chat with my friends about said project.
+- When I click on a project, I am shown the video and a chat box underneath said video.
 
 ## APIs/NPM Libraries
 - NPM Stream Chat : https://www.npmjs.com/package/stream-chat
 - Stream API : https://getstream.io/chat/get_started/
-- Twitch API : https://dev.twitch.tv/docs/
-- NPM Scheduler-Calendar : https://www.npmjs.com/package/scheduler-calendar
+- Chat io : https://www.livechat.com/
 - Bcrypt
 
 ## Database
 - UserDB - stores username, encrypted password, and email
-- VideoDB - links to video streams
-- EventDB - stores user created calendar events
+- VideoDB - links to projects
 
 ## Wireframe
 
-### Homepage
-<img src ="https://user-images.githubusercontent.com/70343136/113649084-6bcd4a00-9653-11eb-8ae0-98e916ad29df.png">
 
 ### Streaming Page
-<img src ="https://user-images.githubusercontent.com/70343136/113649086-6cfe7700-9653-11eb-855e-c3f3f758d835.png">
+<img src ="https://user-images.githubusercontent.com/63210444/113950333-e9b16280-97c5-11eb-9833-bb81aed6cac9.png">
 
-### Calendar Page
-<img src ="https://user-images.githubusercontent.com/70343136/113649071-67a12c80-9653-11eb-850c-9cfa58533eec.png">

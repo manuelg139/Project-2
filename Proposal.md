@@ -11,9 +11,8 @@ Premiere is an application that allows a user to create a private screening for 
 - When I click on a project, I am shown the video and a chat box underneath said video.
 
 ## APIs/NPM Libraries
-- NPM Stream Chat : https://www.npmjs.com/package/stream-chat
-- Stream API : https://getstream.io/chat/get_started/
 - Chat io : https://www.livechat.com/
+- Nodemailer: https://nodemailer.com/about/
 - Bcrypt
 
 ## Database

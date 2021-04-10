@@ -8,7 +8,7 @@ const { Projects, Users, Comments } = require('../models');
 router.get('/', async (req, res) => {
   try {
       // Get all posts and JOIN with user data
-      const postData = await Posts.findAll({
+      const postData = await Projects.findAll({
         include: [
           {
             model: Comments,
@@ -16,17 +16,21 @@ router.get('/', async (req, res) => {
           },
           {
             model: Users,
-            attributes: ['username', 'name', 'github']
+            attributes: ['username', 'name']
+          },
+          {
+            model: Projects,
+            attributes: ['title', 'media_link','description', 'users_id', ]
           },
         ],
       });
   
       // Serialize data so the template can read it
-      const posts = postData.map((post) => post.get({ plain: true }));
+      const projects = projetcsData.map((post) => post.get({ plain: true }));
   
       // Pass serialized data and session flag into template I will create
       res.render('homepage', { 
-        posts, 
+        projects, 
         logged_in: req.session.logged_in 
       });
     } catch (err) {
@@ -59,9 +63,9 @@ router.get('/signup', (req, res) => {
 
 
 //render posts by id
-router.get('/posts/:id', async (req, res) => {
+router.get('/projects/:id', async (req, res) => {
   try {
-      const postData = await Posts.findByPk(req.params.id, {
+      const projectsData = await Projects.findByPk(req.params.id, {
         include: [
           {
             model: Comments,
@@ -69,17 +73,17 @@ router.get('/posts/:id', async (req, res) => {
           },
           {
             model: Users,
-            attributes: ['username', 'name', 'github']
+            attributes: ['username', 'name',]
           },
         ],
       });
 
         // serialize the data
-      const post = postData.get({ plain: true });
+      const projects = projectsData.get({ plain: true });
   
         // pass data to template
-      res.render('singlePost', {
-        ...post,
+      res.render('singleProject', {
+        ...projects,
         logged_in: req.session.logged_in
       });
     } catch (err) {

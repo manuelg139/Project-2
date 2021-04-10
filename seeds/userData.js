@@ -23,6 +23,6 @@ const userdata = [
 },
 ];
 
-const seedUser = () => User.bulkCreate(userdata);
+const seedUser = () => Users.bulkCreate(userdata);
 
 module.exports = seedUser;

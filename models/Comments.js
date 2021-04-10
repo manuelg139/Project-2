@@ -24,7 +24,7 @@ Comments.init(
       allowNull: false,
       defaultValue: create,
       references: {
-        model: 'posts',
+        model: 'projects',
         key: 'id',
       },
     },

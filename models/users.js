@@ -1,6 +1,7 @@
 const { Model, DataTypes } = require('sequelize');
 const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
+const { create } = require('./Projects');
 
 class Users extends Model {
   checkPassword(loginPw) {
@@ -38,6 +39,7 @@ Users.init(
       validate: {
         len: [8],
       },
+      defaultValue: 'password',
     },
   },
   {

@@ -1,49 +1,54 @@
 const router = require('express').Router();
-const { Emailer } = require('../../models');
-const withAuth = require('../../utils/auth');
+const { Users, Emailer } = require('../../models');
+const nodemailer = require('nodemailer');
 
-
-
-// CREATE new comments
-router.post('/', withAuth, async  (req, res) => {
-    try  {
-        //collects the post data
-      const commentData = await Comments.create({
-        comment_content: req.body.comment_content,
-        posts_id: req.body.posts_id,
-        // use the id from the session
-        user_id: req.session.user_id,
-      });
-        res.status(200).json(commentData);
-    } catch (err) {
-      console.log(err);
-      res.status(500).json(err);
-    }
-  });
-
-
-
-// DELETE comments
-
-// DELETE POST 
-  router.delete('/:id', async (req, res) => {
-    // delete a post by its `id` value
+// CREATE email
+router.post('/', async (req, res) => {
     try {
-      const commentData = await Comments.destroy({
-        where: {
-          id: req.params.id,
-        },
-      });
-  
-      if (!commentData) {
-        res.status(404).json({ message: 'No post found with that id!' });
-        return;
-      }
-  
-      res.status(200).json(commentData);
+        const transporter = nodemailer.createTransport({
+            service: 'outlook',
+            auth: {
+                user: 'emailhere',
+                pass: 'passwordhere'
+            },
+
+            include: [
+                {
+                    model: Users,
+                    attributes: ['id', 'email'],
+                },
+
+                {
+                    model: Emailer,
+                    attributes: ['id', 'users_id', 'title', 'email_content'],
+                },
+            ],
+        });
+
+        const mailOptions = {
+            from: req.body.email,
+            to: req.body,
+            subject: req.body.title,
+            text: req.body.email_content,
+        };
+        transporter.sendMail(mailOptions, function (error, info) {
+            if (error) {
+                console.log(error);
+            } else {
+                console.log('Email sent: ' + info.response);
+            }
+        });
+
+        // Set up sessions with a 'loggedIn' variable set to `true`
+        req.session.save(() => {
+            req.session.loggedIn = true;
+
+            res.status(200).json(dbCommentData);
+        });
     } catch (err) {
-      res.status(500).json(err);
+        console.log(err);
+        res.status(500).json(err);
     }
-  });
-  
-  module.exports = router;
+});
+
+module.exports = router;

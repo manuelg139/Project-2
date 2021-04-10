@@ -1,6 +1,7 @@
 const Users = require('./Users');
 const Projects = require('./Projects');
 const Comments = require('./Comments');
+const Emailer = require('./Emailer');
 
 Users.hasMany(Projects, {
     foreignKey: 'users_id',
@@ -30,4 +31,4 @@ Projects.hasMany(Comments, {
 });
 
 
-module.exports = {Users, Projects, Comments};
+module.exports = {Users, Projects, Comments, Emailer};

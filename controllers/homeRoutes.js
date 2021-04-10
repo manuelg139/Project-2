@@ -1,7 +1,6 @@
 const router = require('express').Router();
 const { Projects, Users, Comments } = require('../models');
 
-
 //? HOMEPAGE DISPLAYS LOGGED IN USERS'S POSTS //
 
 //render homepage

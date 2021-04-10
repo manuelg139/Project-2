@@ -29,7 +29,6 @@ Emailer.init(
       projects_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        defaultValue: create,
         references: {
           model: 'projects',
           key: 'id',

@@ -31,7 +31,7 @@ Comments.init(
     comment_content:{
       type: DataTypes.STRING,
       allowNull: false,
-      defaultValue: create,
+      defaultValue: 'create',
     },
   },
   {

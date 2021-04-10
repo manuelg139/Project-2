@@ -1,6 +1,5 @@
 const { Model, DataTypes, EmptyResultError } = require('sequelize');
 const sequelize = require('../config/connection');
-const { create } = require('./Emailer');
 
 class Emailer extends Model{}
 

@@ -27,7 +27,7 @@ Emailer.init(
           key: 'id',
         },
       },
-      posts_id: {
+      projects_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
         defaultValue: create,

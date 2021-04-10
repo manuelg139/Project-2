@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { Projects, Users, Comments } = require('../models');
+const withAuth = require('../utils/auth');
 
 // GET all Projects for Dashboard
 router.get('/', async (req, res) => {

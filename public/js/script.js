@@ -14,7 +14,15 @@ const emailFormHandler = async (event) => {
     });
 
     if(response.ok) {
-      document.location.replace('/')
+      document.location.replace('/api/dashboard');
+      console.log('Success')
+    }
+    else {
+      alert ("Please make sure all fields are completed");
     }
   }
-}
+};
+
+document
+  .querySelector('.email-form')
+  .addEventListener('submit', emailFormHandler);

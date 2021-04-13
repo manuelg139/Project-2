@@ -2,7 +2,7 @@ const { Model, DataTypes, EmptyResultError } = require('sequelize');
 const sequelize = require('../config/connection');
 const { create } = require('./Comments');
 
-class Comments extends Model{}
+class Comments extends Model { }
 
 Comments.init(
   {
@@ -28,10 +28,14 @@ Comments.init(
         key: 'id',
       },
     },
-    comment_content:{
+    comment_content: {
       type: DataTypes.STRING,
       allowNull: false,
       defaultValue: 'create',
+    },
+    date: {
+      type: DataTypes.DATE,
+      allowNull: false,
     },
   },
   {

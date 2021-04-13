@@ -14,7 +14,7 @@ const emailFormHandler = async (event) => {
     });
 
     if(response.ok) {
-      document.location.replace('/api/dashboard');
+      document.location.replace('/api/emailers');
       console.log('Success')
     }
     else {

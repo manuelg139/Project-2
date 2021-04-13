@@ -18,10 +18,22 @@ router.get('/', async (req, res) => {
 router.post('/', async (req, res) => {
     try {
         const transporter = nodemailer.createTransport({
-            service: 'outlook',
+            // service: 'outlook',
+            // auth: {
+            //   type: 'login',
+            //   user: 'premiereshow2021@outlook.com',
+            //   pass: 'Welovemanny2021!'
+            // },
+            host: "smtp.office365.com",
+            port: 587,
+            secure: false, // use TLS
             auth: {
-                user: 'emailhere',
-                pass: 'passwordhere'
+              user: "premiereshow2021@outlook.com",
+              pass: "Welovemanny2021!"
+            },
+            tls: {
+              // do not fail on invalid certs
+              rejectUnauthorized: false
             },
 
             include: [
@@ -38,10 +50,10 @@ router.post('/', async (req, res) => {
         });
 
         const mailOptions = {
-            from: req.body.email,
-            to: req.body,
-            subject: req.body.title,
-            text: req.body.email_content,
+            from: req.body.from,
+            to: req.body.to,
+            subject: req.body.subject,
+            text: req.body.content,
         };
         transporter.sendMail(mailOptions, function (error, info) {
             if (error) {
@@ -51,11 +63,20 @@ router.post('/', async (req, res) => {
             }
         });
 
+        // verify connection configuration
+        transporter.verify(function(error, success) {
+          if (error) {
+            console.log(error);
+          } else {
+            console.log("Server is ready to take our messages");
+          }
+        });
+
         // Set up sessions with a 'loggedIn' variable set to `true`
         req.session.save(() => {
             req.session.loggedIn = true;
 
-            res.status(200).json(dbCommentData);
+            res.status(200).json(mailOptions);
         });
     } catch (err) {
         console.log(err);

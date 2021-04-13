@@ -3,6 +3,18 @@ const { Users, Emailer } = require('../../models');
 const nodemailer = require('nodemailer');
 
 // CREATE email
+router.get('/', async (req, res) => {
+  try {
+    res.render('emailer', {  
+      logged_in: req.session.logged_in 
+    });
+    } catch (err) {
+      console.log(err);
+      res.status(500).json(err);
+    }
+  
+});
+
 router.post('/', async (req, res) => {
     try {
         const transporter = nodemailer.createTransport({
